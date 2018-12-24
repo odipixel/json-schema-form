@@ -1,0 +1,115 @@
+<!-- <json-schema-form
+  loadExternalAssets="true"
+  [schema]="JsonSchema"
+  framework="bootstrap-4"
+  (onSubmit)="yourOnSubmitFn($event)">
+</json-schema-form> -->
+<header>
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">About</h4>
+          <p class="text-muted">A simple JSON schema form builder.</p>
+          <h5 class="text-white">Developed by : Kishore</h5>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container d-flex justify-content-between">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+          <strong>JSON Schema Form</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main role="main">
+
+  <section class="jumbotron">
+    <div class="container">
+      <h1 class="jumbotron-heading">JSON Schema form</h1>
+      <p class="lead text-muted"> It can do two things.</p>
+     
+        <ul>
+          <li>Create a form directly from a JSON schema.</li>
+          <li>Validate form fields against that same JSON schema.</li>
+        </ul>
+        <p class="lead text-muted"> How to use ?</p>
+     
+        <ul>
+          <li>Change the schema in 'schema' input field.Changes will automatically reflect in 'generated form' box</li>
+          <li>Fill the input with wrong value to check the validations.Submit button will be active, only if all the form fileds are valid.</li>
+          <li>Fill the form with valid inputs and click on submit button.</li>
+        </ul>
+    
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Schema</h5>
+              <div class="form-group">
+                <label for="JsonSchema">Change your schema here</label>
+                <textarea class="form-control" id="JsonSchema" rows="20" [(ngModel)] = "inputValue" (ngModelChange)="changeForm($event)">{{JsonSchema | json}}</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        <div class="col-md-6">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Generated Form</h5>
+             
+              <json-schema-form
+              loadExternalAssets="true"
+              [schema]="JsonSchema"
+              framework="bootstrap-4"
+              (onSubmit)="submitFormData($event)">
+            </json-schema-form>
+            </div>
+          </div>
+        </div>
+
+      
+
+
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-dark" role="alert">
+                <h4 class="alert-heading">Form output</h4>
+                
+                <hr>
+                <p>{{formOutput | json}}</p>
+              </div>
+        </div>
+       
+      </div>
+    </div> 
+  </div>
+
+</main>
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+   
+  </div>
+</footer>
+<router-outlet></router-outlet>
